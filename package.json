@@ -1,5 +1,5 @@
 {
-  "name": "scaffolding",
+  "name": "ebook-cms",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maggieneterval/scaffolding.git"
+    "url": "git+https://github.com/maggieneterval/ebook-cms.git"
   },
   "author": "Maggie Neterval",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/maggieneterval/scaffolding/issues"
+    "url": "https://github.com/maggieneterval/ebook-cms/issues"
   },
-  "homepage": "https://github.com/maggieneterval/scaffolding#readme",
+  "homepage": "https://github.com/maggieneterval/ebook-cms#readme",
   "dependencies": {
     "axios": "^0.15.2",
     "babel-core": "^6.18.2",
@@ -31,6 +31,7 @@
     "pg-hstore": "^2.3.2",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
+    "react-markdown": "^2.4.2",
     "react-redux": "^4.4.6",
     "react-router": "^3.0.0",
     "rebass": "^0.3.3",
@@ -38,6 +39,7 @@
     "redux-form": "^6.2.0",
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.1.0",
+    "reflexbox": "^2.2.3",
     "sequelize": "^3.27.0",
     "webpack": "^1.13.3"
   }
