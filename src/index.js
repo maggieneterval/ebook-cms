@@ -6,20 +6,20 @@ import App from './Components/App';
 import NewChapterForm from './Components/NewChapterForm';
 import Chapter from './Components/Chapter';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import axios from 'axios';
+import { asyncGetAllChapters } from './reducers/chapters';
 
-function getChapter (nextState) {
-  console.log('nextState: ', nextState);
-  //get request using nextState.params.chapter
+function getAllChapters (nextState, replace, callback) {
+  return store.dispatch(asyncGetAllChapters())
+    .then(() => callback());
 }
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={App}>
+      <Route path="/" component={App} onEnter={getAllChapters}>
         <IndexRoute component={NewChapterForm} />
         <Route path="/new" component={NewChapterForm} />
-        <Route path="/:chapter" component={Chapter} onEnter={getChapter} />
+        <Route path="/:chapter" component={Chapter} />
       </Route>
     </Router>
   </Provider>,

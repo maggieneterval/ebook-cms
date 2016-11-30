@@ -1,15 +1,14 @@
 const Sequelize = require('sequelize');
 const db = require('../index');
 
-const User = db.define('client', {
-  firstName: {
-    type: Sequelize.STRING,
-    allowNull: false
+const Section = db.define('section', {
+  index: {
+    type: Sequelize.INTEGER
   },
-  lastName: {
+  title: {
     type: Sequelize.STRING,
     allowNull: false
   }
 });
 
-module.exports = User;
+module.exports = Section;

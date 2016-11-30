@@ -15,6 +15,10 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.json$/,
+        loader: 'json'
+      },
+      {
         test: /\.(js|jsx)$/,
         include: appSrc,
         loader: 'babel',

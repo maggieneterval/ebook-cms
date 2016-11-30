@@ -9,9 +9,10 @@ class Sidebar extends React.Component {
         <p>Sidebar</p>
         <Link to="new">New Chapter</Link>
         {
-          this.props.chapters.map( (chapter, index) => (
-            <div key={index}>
-              <Link to={index.toString()}>{chapter.title}</Link>
+          this.props.chapters.sort((a,b) => a.index - b.index)
+          .map(chapter => (
+            <div key={chapter.id}>
+              <Link to={chapter.index.toString()}>{chapter.title}</Link>
             </div>
           ))
         }
