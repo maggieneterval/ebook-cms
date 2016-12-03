@@ -10,8 +10,8 @@ User.hasMany(Book);
 Section.belongsTo(Book);
 Book.hasMany(Section);
 
-Section.belongsTo(Section);
-Section.hasMany(Section);
+Section.belongsTo(Section, { as: 'ParentSection' });
+Section.hasMany(Section, { as: 'ChildSection' });
 
 Block.belongsTo(Section);
 Section.hasMany(Block);

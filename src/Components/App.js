@@ -1,20 +1,22 @@
 import React from 'react';
 import Sidebar from './Sidebar';
+import Navbar from './Navbar';
 
 export default class App extends React.Component {
-
-  constructor () {
-    super();
-  }
 
   render () {
     return (
       <div className="container">
-        <div className="sidebar">
-          <Sidebar />
+        <div class="navbar">
+          <Navbar />
         </div>
-        <div className="main">
-          {this.props.children}
+        <div>
+          <div className="sidebar">
+            <Sidebar />
+          </div>
+          <div className="main">
+            {this.props.children}
+          </div>
         </div>
       </div>
     );

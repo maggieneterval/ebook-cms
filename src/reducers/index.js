@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
-import { reducer as form } from 'redux-form';
-import chapters from './chapters';
+import users from './users';
+import books from './books';
+import sections from './sections';
+import blocks from './blocks';
 
 const rootReducer = combineReducers({
-  chapters,
-  form
+  users,
+  books,
+  sections,
+  blocks
 });
 
 export default rootReducer;

@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { asyncPostChapter } from '../reducers/chapters';
+import { asyncPostBlock } from '../reducers/blocks';
 import marked from 'marked';
 import { browserHistory } from 'react-router';
 
-class NewChapterForm extends React.Component {
+class BlockForm extends React.Component {
 
   constructor (props) {
     super(props);
@@ -13,10 +13,10 @@ class NewChapterForm extends React.Component {
       content: null,
       testMath: '`a^2 + b^2 = c^2`'
     };
-    this.postNewChapter = this.postNewChapter.bind(this);
+    this.postBlock = this.postBlock.bind(this);
   }
 
-  postNewChapter (e) {
+  postBlock (e) {
     e.preventDefault();
     return this.props.createNewChapter({
       title: this.state.title,
@@ -30,7 +30,7 @@ class NewChapterForm extends React.Component {
     return (
       <div>
         <p>Create new chapter</p>
-        <form name="newChapterForm" onSubmit={this.postNewChapter}>
+        <form name="newChapterForm" onSubmit={this.postBlock}>
           <label htmlFor="title">Title</label>
           <br />
           <input name="title" onChange={evt => this.setState({title: evt.target.value})} />
