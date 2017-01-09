@@ -7,26 +7,25 @@ class Sidebar extends React.Component {
     return (
       <div>
         <p>Sidebar</p>
-        <Link to="new">New Chapter</Link>
-        {
-          this.props.chapters.sort((a,b) => a.index - b.index)
-          .map(chapter => (
-            <div key={chapter.id}>
-              <Link to={chapter.index.toString()}>{chapter.title}</Link>
-            </div>
-          ))
-        }
+        
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ chapters }) => ({
-  chapters
+const mapStateToProps = ({ sections }) => ({
+  sections
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export default connect(mapStateToProps)(Sidebar);
 
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+// <Link to="new">New Section</Link>
+//         {
+//           this.props.sections.sort((a,b) => a.index - b.index)
+//           .map(section => (
+//             <div key={section.id}>
+//               <Link to={section.index.toString()}>{section.title}</Link>
+//             </div>
+//           ))
+//         }

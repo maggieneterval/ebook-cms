@@ -34,9 +34,9 @@ const getAllSections = (sections) => ({
     sections
 });
 
-export const asyncGetAllSections = () => {
+export const asyncGetAllSections = (bookId) => {
   return (dispatch) => {
-    return axios.get('/api/sections')
+    return axios.get(`/api/sections/${bookId}`)
       .then(res => {
         return dispatch(getAllSections(res.data));
       });

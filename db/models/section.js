@@ -11,11 +11,11 @@ const Section = db.define('section', {
     allowNull: false
   }
 }, {
-  defaultScope: {
-      include: [
-        { model: Block, where: { sectionId: this.id }}, //does this work? also need to find a way to recursively find children sections, etc.
-      ]
-    }
+  // defaultScope: {
+  //     include: [
+  //       { model: Block, where: { sectionId: this.id }}, //does this work? also need to find a way to recursively find children sections, etc.
+  //     ]
+  //   }
 });
 
 module.exports = Section;

@@ -1,15 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { asyncPostBlock } from '../reducers/blocks';
+import { asyncPostBlock } from '../../reducers/blocks';
 import marked from 'marked';
 import { browserHistory } from 'react-router';
+
+//TODO: select whether this block will be markdown, latex, or diagram. save accordingly. associate with appropriate section.
 
 class BlockForm extends React.Component {
 
   constructor (props) {
     super(props);
     this.state = {
-      title: null,
       content: null,
       testMath: '`a^2 + b^2 = c^2`'
     };
@@ -18,23 +19,18 @@ class BlockForm extends React.Component {
 
   postBlock (e) {
     e.preventDefault();
-    return this.props.createNewChapter({
-      title: this.state.title,
-      content: marked(this.state.content),
-      index: this.props.chapters.length
+    return this.props.createNewBlock({
+      content: this.state.content,
+      index: this.props.sections.length
     })
-    .then(() => browserHistory.push(`/${this.props.chapters.length -1}`));
+    .then(() => browserHistory.push('/')); //TODO: go to updated section at point of new block.
   }
 
   render () {
     return (
       <div>
-        <p>Create new chapter</p>
-        <form name="newChapterForm" onSubmit={this.postBlock}>
-          <label htmlFor="title">Title</label>
-          <br />
-          <input name="title" onChange={evt => this.setState({title: evt.target.value})} />
-          <br />
+        <p>Create new block</p>
+        <form name="newBlockForm" onSubmit={this.postBlock}>
           <label htmlFor="content">Content</label>
           <br />
           <textarea name="content" onChange={evt => this.setState({content: evt.target.value})} />
@@ -44,19 +40,17 @@ class BlockForm extends React.Component {
         <textarea onChange={evt => this.setState({testMath: evt.target.value})} />
         <p>{this.state.testMath}</p>
          <p> \(\frac a b\)</p>
-          <p>MathML: <math><msqrt><mi>x</mi></msqrt></math></p>
-          <p>AsciiMath: `a^2 + b^2 = c^2`</p>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ chapters }) => ({
-  chapters
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  createNewChapter: (data) => dispatch(asyncPostChapter(data))
+const mapStateToProps = ({ sections }) => ({
+  sections
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewChapterForm);
+const mapDispatchToProps = (dispatch) => ({
+  createNewBlock: (data) => dispatch(asyncPostBlock(data))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlockForm);

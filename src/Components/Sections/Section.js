@@ -1,24 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import marked from 'marked'
 
-class Chapter extends React.Component {
+class Section extends React.Component {
 
   render () {
-    const { chapters, params } = this.props;
-    const chapter = chapters[Number(params.chapter)];
+    const { sections, params } = this.props;
+    const section = sections[0];
     return (
       <div>
-        <h1>Title: {chapter.title}</h1>
+        <h1>Title: {section.title}</h1>
         <p>Content:</p>
-        <div dangerouslySetInnerHTML={{__html: chapter.content}}>
-        </div>
+
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ chapters }) => ({
-  chapters
+const mapStateToProps = ({ sections }) => ({
+  sections
 });
 
-export default connect(mapStateToProps)(Chapter);
+export default connect(mapStateToProps)(Section);

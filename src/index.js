@@ -12,15 +12,15 @@ import BlockForm from './Components/Blocks/BlockForm';
 import { asyncGetAllSections } from './reducers/sections';
 
 
-function getAllChapters (nextState, replace, callback) {
-  return store.dispatch(asyncGetAllSections())
+function getAllSections (nextState, replace, callback) {
+  return store.dispatch(asyncGetAllSections(1)) //TODO: replace hard-coded book with dynamic book ID based on user-selected book
     .then(() => callback());
 }
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={App} onEnter={getAllChapters}>
+      <Route path="/" component={App} onEnter={getAllSections}>
         <IndexRoute component={SectionForm} />
         <Route path="/book-form" component={BookForm} />
         <Route path="/section-form" component={SectionForm} />

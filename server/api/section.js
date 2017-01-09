@@ -1,6 +1,7 @@
 const express = require('express');
 const sections = express.Router();
 const Section = require('../../db/models/section');
+const Block = require('../../db/models/block');
 
 //get all root sections for a particular book:
 sections.get('/:bookId', (req, res, next) => {
@@ -8,9 +9,11 @@ sections.get('/:bookId', (req, res, next) => {
     where: {
       bookId: req.params.bookId,
       sectionId: null //no parent section
-    }
+    },
+    include: [Block] //eagerly load associated block
   })
-    .then(sections => res.send(sections))
+    .then(sections => {
+    res.send(sections)})
     .catch(next);
 });
 

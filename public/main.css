@@ -1,15 +1,28 @@
+body, p {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .container {
   display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .sidebar {
-  width: 25%;
+  background-color: turquoise;
+}
+
+.navbar {
+  background-color: orange;
 }
 
 .main {
-  width: 75%;
+  display: flex;
+  flex: 1;
+  background-color: green;
 }
