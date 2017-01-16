@@ -5,9 +5,14 @@ import marked from 'marked';
 
 class Block extends React.Component {
 
-  render ({ block }) {
+  render () {
+    const {block} = this.props;
     return (
-      <div dangerouslySetInnerHTML={{__html: marked(block.content)}}>
+      <div>
+        {block.type === 'markdown' ?
+          <div dangerouslySetInnerHTML={{__html: marked(block.content)}}></div>
+          : <div dangerouslySetInnerHTML={{__html: block.content}}></div>
+        }
       </div>
     );
   }

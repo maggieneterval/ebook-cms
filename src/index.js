@@ -6,7 +6,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './Components/App';
 import BookForm from './Components/Books/Book';
-import SectionForm from './Components/Sections/Section';
+import Section from './Components/Sections/Section';
+import SectionForm from './Components/Sections/SectionForm';
 import BlockForm from './Components/Blocks/BlockForm';
 
 import { asyncGetAllSections } from './reducers/sections';
@@ -21,7 +22,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App} onEnter={getAllSections}>
-        <IndexRoute component={SectionForm} />
+        <IndexRoute component={Section} />
         <Route path="/book-form" component={BookForm} />
         <Route path="/section-form" component={SectionForm} />
         <Route path="/block-form" component={BlockForm} />
